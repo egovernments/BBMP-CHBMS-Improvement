@@ -33,7 +33,7 @@ jobs:
      
     - name: Build with Maven
       working-directory: ./Backend/bms-consumer/
-      run: mvn clean install  
+      run: mvn clean package  
       
     - name: Upload artifact for deployment job
       uses: actions/upload-artifact@v2
