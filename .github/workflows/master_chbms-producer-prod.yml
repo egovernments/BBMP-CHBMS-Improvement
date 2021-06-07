@@ -28,7 +28,7 @@ jobs:
         java-version: '11'
 
     - name: Build with Maven
-      working-directory: ./Backend/bms-producer
+      working-directory: Backend/bms-producer/
       run: mvn clean install
       
     - name: Upload artifact for deployment job
