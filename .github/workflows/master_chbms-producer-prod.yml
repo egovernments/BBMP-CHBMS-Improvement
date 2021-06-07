@@ -6,8 +6,7 @@ name: Azure App Service - chbms-producer-prod(Production), Build and deploy Spri
 on:
   pull_request:
     paths:
-      - 'Portal/Backend/bms-producer/**'
-      - '!./**'
+      - 'Backend/bms-producer/**'
 
     branches:
       - master
@@ -28,8 +27,8 @@ jobs:
         java-version: '11'
 
     - name: Build with Maven
-      working-directory: Backend/bms-producer/
-      run: mvn clean install
+      working-directory: ./Backend/bms-producer/
+      run: mvn clean package
       
     - name: Upload artifact for deployment job
       uses: actions/upload-artifact@v2
