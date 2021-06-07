@@ -1,13 +1,18 @@
 # Docs for the Azure Web Apps Deploy action: https://go.microsoft.com/fwlink/?linkid=2134798
 # More GitHub Actions for Azure: https://go.microsoft.com/fwlink/?linkid=2135048
 
-name: Azure App Service - chbms-producer-prod(Production), Build and deploy Spring app
+name: Azure App Service - chbms-consumer-prod(Production), Build and deploy Spring app
 
 on:
+  pull_request:
+    paths:
+      - 'Backend/bms-consumer/**'
+    branches:
+      - bbmp-test
+      
   push:
     paths:
-      - 'Backend/bms-producer/**'
-
+      - 'Backend/bms-consumer/**' 
     branches:
       - bbmp-test
 
@@ -25,16 +30,16 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: '11'
-
+     
     - name: Build with Maven
-      working-directory: ./Backend/bms-producer/
-      run: mvn clean package
-    
+      working-directory: ./Backend/bms-consumer/
+      run: mvn clean package  
+      
     - name: Upload artifact for deployment job
       uses: actions/upload-artifact@v2
       with:
         name: java-app
-        path: '${{ github.workspace }}/Backend/bms-producer/target/*.jar'
+        path: '${{ github.workspace }}/Backend/bms-consumer/target/*.jar' 
         
   deploy:
     runs-on: ubuntu-latest
@@ -53,16 +58,16 @@ jobs:
       id: deploy-to-webapp
       uses: azure/webapps-deploy@v2
       with:
-        app-name: 'chbms-producer-prod'
+        app-name: 'chbms-consumer-prod'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_FF9BA664018E40B7B2BD592B0A5C78AB }}
-        package: '*.jar'
-    
+        publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_F64F86E760FB4E4C873A1F14861F6D44 }}
+        package: '*.jar'      
+
     #- name: Run Azure webapp deploy action using publish profile credentials
     #  uses: azure/webapps-deploy@v2
     #  with:
-    #    app-name: chbms-producer-prod
+    #    app-name: chbms-consumer-prod
     #    slot-name: Production
-    #    publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_FF9BA664018E40B7B2BD592B0A5C78AB }}
+    #    publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_F64F86E760FB4E4C873A1F14861F6D44 }}
     #    package: ${{ github.workspace }}/target/*.jar
 
