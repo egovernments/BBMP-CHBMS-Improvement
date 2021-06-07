@@ -1,5 +1,10 @@
 name: Build and push bbmp portal
 on:
+  pull_request:
+    paths:
+      - 'ui/**'
+    branches:
+      - master  
   push:
     paths:
       - 'ui/**'
