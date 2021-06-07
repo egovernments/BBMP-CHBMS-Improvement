@@ -9,7 +9,7 @@ on:
       - 'Backend/bms-producer/**'
 
     branches:
-      - bbmp-test
+      - master
 
 jobs:
   build:
@@ -19,7 +19,6 @@ jobs:
     # checkout the repo
     - name: 'Checkout Github Action'
       uses: actions/checkout@master
-
 
     - name: Set up Java version
       uses: actions/setup-java@v1
@@ -57,12 +56,4 @@ jobs:
         slot-name: 'production'
         publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_FF9BA664018E40B7B2BD592B0A5C78AB }}
         package: '*.jar'
-    
-    #- name: Run Azure webapp deploy action using publish profile credentials
-    #  uses: azure/webapps-deploy@v2
-    #  with:
-    #    app-name: chbms-producer-prod
-    #    slot-name: Production
-    #    publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_FF9BA664018E40B7B2BD592B0A5C78AB }}
-    #    package: ${{ github.workspace }}/target/*.jar
 

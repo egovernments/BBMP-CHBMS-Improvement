@@ -8,13 +8,13 @@ on:
     paths:
       - 'Backend/bms-consumer/**'
     branches:
-      - bbmp-test
+      - master
       
   push:
     paths:
       - 'Backend/bms-consumer/**' 
     branches:
-      - bbmp-test
+      - master
 
 jobs:
   build:
@@ -63,11 +63,4 @@ jobs:
         publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_F64F86E760FB4E4C873A1F14861F6D44 }}
         package: '*.jar'      
 
-    #- name: Run Azure webapp deploy action using publish profile credentials
-    #  uses: azure/webapps-deploy@v2
-    #  with:
-    #    app-name: chbms-consumer-prod
-    #    slot-name: Production
-    #    publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_F64F86E760FB4E4C873A1F14861F6D44 }}
-    #    package: ${{ github.workspace }}/target/*.jar
 
