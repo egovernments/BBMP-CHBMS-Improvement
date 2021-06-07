@@ -4,7 +4,11 @@
 name: Azure App Service - chbms-producer-prod(Production), Build and deploy Spring app
 
 on:
-  push:
+  pull_request:
+    paths:
+      - 'Portal/Backend/bms-producer/**'
+      - '!./**'
+
     branches:
       - master
 
@@ -24,7 +28,14 @@ jobs:
         java-version: '11'
 
     - name: Build with Maven
+      working-directory: ./Backend/bms-producer
       run: mvn clean install
+      
+    - name: Upload artifact for deployment job
+      uses: actions/upload-artifact@v2
+      with:
+        name: java-app
+        path: '${{ github.workspace }}/Backend/bms-producer/target/*.jar'  
 
     - name: Run Azure webapp deploy action using publish profile credentials
       uses: azure/webapps-deploy@v2
