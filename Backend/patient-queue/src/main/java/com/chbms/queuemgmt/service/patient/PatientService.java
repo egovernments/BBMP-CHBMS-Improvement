@@ -21,7 +21,6 @@ import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.util.Collections;
 import java.util.List;
@@ -218,7 +217,7 @@ public class PatientService {
                 .queueType(getQueueType(queueEntry))
                 .queueName(getQueueName(queueEntry))
                 .zone(patient.getZone())
-                .timeAddedToQueue((queueEntry != null) ? LocalDateTime.ofInstant(queueEntry.getEnqueueTimestamp(), ZoneOffset.ofHoursMinutes(5, 30)).toString() : null)
+                .timeAddedToQueue((queueEntry != null) ? queueEntry.getEnqueueTimestamp().toString() : null)
                 .build()
         );
     }
