@@ -13,13 +13,9 @@ if($_SERVER['HTTP_HOST'] == 'localhost')
 else {
 
 
-  $dbservertype='mysqli';
-	$servername='bbmp-db.mysql.database.azure.com';
-	$dbuser='dbadmin@bbmp-db';
-	$dbpassword='bbmpadmin@4321';
-	$dbname='chbms'; 
+   $dbservertype='mysqli';
 
-  $servername = getenv('DB_HOST');
+  	$servername = getenv('DB_HOST');
 	$dbuser = getenv('DB_USER');
 	$dbpassword = getenv('DB_PASSWORD');
 	$dbname = getenv('DB_NAME'); 
@@ -27,12 +23,9 @@ else {
 
 }
 
-//echo $dbname;
-
-//$cn = mysqli_connect($servername,$dbuser,$dbpassword,$dbname);
 global $mysqli;
 
-//mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+
 try {
   $mysqli = new mysqli($servername, $dbuser, $dbpassword, $dbname);
   $mysqli->set_charset("utf8mb4");
@@ -40,10 +33,5 @@ try {
   error_log($e->getMessage());
   exit('Error connecting to database'); //Should be a message a typical user could understand
 }
-// Check connection
-/*if (mysqli_connect_errno()) {
-  echo "Failed to connect to MySQL: " . mysqli_connect_error();
-  exit();
-}*/
 
 ?>
