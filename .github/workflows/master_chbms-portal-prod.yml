@@ -21,8 +21,8 @@ jobs:
     - uses: azure/docker-login@v1
       with:
         login-server: index.docker.io
-        username: ${{ secrets.DOCKER_USER }}
-        password: ${{ secrets.DOCKER_PASSWORD }}   
+        username: ${{ secrets.DOCKERIO_USERNAME }}
+        password: ${{ secrets.DOCKERIO_PASSWORD }} 
     
     - run: |
         docker build -f ui/Dockerfile --build-arg "WORK_DIR=ui" -t nikeshumredkar/chbms-portal-ui:master-${{ github.sha }} .
@@ -31,4 +31,4 @@ jobs:
     - uses: azure/webapps-deploy@v2
       with:
         app-name: 'chbms-portal-prod'
-        images: 'nikeshumredkar/chbms-portal-ui:master-${{ github.sha }}'    
+        images: 'index.docker.io/nikeshumredkar/chbms-portal-ui:master-${{ github.sha }}'    
