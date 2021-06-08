@@ -1,17 +1,8 @@
 <?php
 include('php/dbhandler.php');
 ?>
-<?php
-  # Start Caching for 120 seconds
-    Header("Cache-Control: must-revalidate");    
-    $ExpStr = "Expires: " . date("d/m/Y h:i:s a", strtotime("+120 seconds"));
-    Header($ExpStr);
-    #end
-?>
-
 <!doctype html>
 <html lang="en">
-
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
@@ -49,9 +40,9 @@ include('php/dbhandler.php');
           <li class="nav-item">
             <a class="nav-link jk-bed-faq " href="#">FAQ</a>
           </li>
-          <!-- <li class="nav-item">
+          <!--<li class="nav-item">
             <a class="nav-link jk-bed-contact" href="#">Contact</a>
-          </li> -->
+          </li>-->
         </ul>
       </div>
       <!-- router contents -->

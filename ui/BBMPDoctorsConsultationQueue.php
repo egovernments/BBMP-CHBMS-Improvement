@@ -1,13 +1,7 @@
 <!doctype html>
 <html lang="en">
 <?php include('php/queue.php'); ?>
-<?php
-  # Start Caching for 120 seconds
-    Header("Cache-Control: must-revalidate");    
-    $ExpStr = "Expires: " . date("d/m/Y h:i:s a", strtotime("+120 seconds"));
-    Header($ExpStr);
-    #end
-?>
+
 <?php
 $pagetype = urldecode($_GET['type']);
 $cat = $_GET['category'];
@@ -63,9 +57,9 @@ if ($pagetype == "") {
           <li class="nav-item">
             <a class="nav-link jk-bed-faq " href="#">FAQ</a>
           </li>
-          <!-- <li class="nav-item">
+          <!--<li class="nav-item">
             <a class="nav-link jk-bed-contact" href="#">Contact</a>
-          </li> -->
+          </li>-->
         </ul>
       </div>
       <!-- router contents -->
