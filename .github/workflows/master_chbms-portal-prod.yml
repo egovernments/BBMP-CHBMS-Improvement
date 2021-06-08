@@ -5,11 +5,7 @@ on:
       - 'ui/**'
     branches:
       - master  
-  push:
-    paths:
-      - 'ui/**'
-    branches:
-      - master
+
 jobs:
   build:
     runs-on: ubuntu-latest      
@@ -24,7 +20,7 @@ jobs:
     - name: docker build
       working-directory: ./ui
       run: |
-        docker build . -t nikeshumredkar/chbms-portal-ui:latest
+        docker build . -t nikeshumredkar/chbms-portal-ui:master-${{ github.sha }}
     - name: docker push
       run: |
-        docker push nikeshumredkar/chbms-portal-ui:latest
+        docker push nikeshumredkar/chbms-portal-ui:master-${{ github.sha }}

@@ -10,12 +10,6 @@ on:
     branches:
       - master
       
-  push:
-    paths:
-      - 'Backend/patient-queue/**' 
-    branches:
-      - master
-
 jobs:
   build:
     runs-on: ubuntu-latest

@@ -9,12 +9,6 @@ on:
       - 'Backend/bms-consumer/**'
     branches:
       - master
-      
-  push:
-    paths:
-      - 'Backend/bms-consumer/**' 
-    branches:
-      - master
 
 jobs:
   build:
