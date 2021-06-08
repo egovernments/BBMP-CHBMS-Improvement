@@ -35,7 +35,25 @@ jobs:
      #    docker build -f ui/Dockerfile --build-arg "WORK_DIR=ui" -t index.docker.io/nikeshumredkar/chbms-portal-ui:master-${{ github.sha }} .
      #    docker push index.docker.io/nikeshumredkar/chbms-portal-ui:master-${{ github.sha }}
         
-    - uses: azure/webapps-deploy@v2
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: 'production'
+      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+      
+    steps:
+    - name: Deploy to Azure Web App
+      id: deploy-to-webapp
+      uses: azure/webapps-deploy@v2
       with:
         app-name: 'chbms-portal-prod'
-        images: 'nikeshumredkar/chbms-portal-ui:master-${{ github.sha }}'    
+        slot-name: 'production'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_1b04ca20f0f8495eb412e7b76f9c36cc }}
+        images: 'index.docker.io/${{ secrets.DOCKERIO_USERNAME }}/chbms-portal-ui:master-${{ github.sha }}'  
+      
+      
+    #- uses: azure/webapps-deploy@v2
+    #  with:
+    #    app-name: 'chbms-portal-prod'
+    #   images: 'nikeshumredkar/chbms-portal-ui:master-${{ github.sha }}'    
