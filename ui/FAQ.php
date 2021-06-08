@@ -41,9 +41,9 @@
                     <li class="nav-item">
                         <a class="nav-link jk-bed-faq active" href="#">FAQ</a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link jk-bed-contact" href="#">Contact</a>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
             <!-- router contents -->
