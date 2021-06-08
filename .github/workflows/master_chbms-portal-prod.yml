@@ -4,7 +4,13 @@ on:
     paths:
       - 'ui/**'
     branches:
-      - master  
+      - master
+      
+  push:
+    paths:
+      - 'ui/**'
+    branches:
+      - master
 
 jobs:
   build:
