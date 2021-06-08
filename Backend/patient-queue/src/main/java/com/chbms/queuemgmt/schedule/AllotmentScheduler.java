@@ -136,6 +136,11 @@ public class AllotmentScheduler {
 
     @Scheduled(initialDelay = 0, fixedDelayString = "${allotment.schedule.fixedDelay}")
     public void allot() throws JsonProcessingException {
+
+        if (cronConfig.getStopAutoAllocation()) {
+            log.info("Auto allocation is stopped through config");
+            return;
+        }
         log.info("Started cron for ER auto allocation");
 
         SASTResponseDto realtimeBedAvailability = sastIntegrator.getRealtimeBedAvailability();
@@ -143,10 +148,6 @@ public class AllotmentScheduler {
 
         log.info("Hospitals found {}", hospitals.size());
 
-        if (cronConfig.getStopAutoAllocation()) {
-            log.info("Auto allocation is stopped through config");
-            return;
-        }
 
         Map<String, List<HospitalDetailsVO>> hospitalsGroupedByZone = hospitals.stream()
                 .filter(hospital -> StringUtils.isNotBlank(hospital.getZone()))
