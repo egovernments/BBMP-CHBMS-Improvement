@@ -1,5 +1,6 @@
 <?php
 date_default_timezone_set('Asia/Kolkata');
+
 if($_SERVER['HTTP_HOST'] == 'localhost')
 {
 
@@ -18,7 +19,6 @@ else {
 	$dbuser = getenv('DB_USER');
 	$dbpassword = getenv('DB_PASSWORD');
 	$dbname = getenv('DB_NAME'); 
-
 
 }
 

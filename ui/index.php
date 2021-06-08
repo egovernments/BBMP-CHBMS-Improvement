@@ -1,15 +1,13 @@
+<?php 
+include('php/connection.php');
+include('php/query.php');
+include('php/pat.php');
+include('php/patientwb.php');
+$curDate = date('Y-m-d H:i:s'); 
+
+?>
 <!doctype html>
 <html lang="en">
-<?php
-
-  include('php/connection.php');
-  include('php/query.php');
-  include('php/pat.php');
-  include('php/patientwb.php');
-  $curDate = date('Y-m-d H:i:s'); 
-
-  
-?>
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">

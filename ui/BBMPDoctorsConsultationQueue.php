@@ -1,16 +1,18 @@
-<!doctype html>
-<html lang="en">
-<?php include('php/queue.php'); ?>
-
 <?php
+
+include('php/queue.php'); 
+
 $pagetype = urldecode($_GET['type']);
-$cat = $_GET['category'];
+$cat = @$_GET['category'];
 if ($pagetype == "") {
   $pagetype = "Zone 1";
 }
 
+
 ?>
 
+<!doctype html>
+<html lang="en">
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
