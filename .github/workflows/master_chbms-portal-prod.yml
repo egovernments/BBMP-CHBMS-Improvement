@@ -17,18 +17,16 @@ jobs:
     runs-on: ubuntu-latest      
     steps:
     - uses: actions/checkout@v2
-    - name: docker login
-      env:
-        DOCKER_USER: ${{ secrets.DOCKER_USER }}
-        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-      run: |
-        docker login -u $DOCKER_USER -p $DOCKER_PASSWORD     
-    - name: docker build
-      working-directory: ./ui
-      run: |
-        docker build . -t nikeshumredkar/chbms-portal-ui:master-${{ github.sha }}
-    - name: docker push
-      run: |
+    
+    - uses: azure/docker-login@v1
+      with:
+        login-server: index.docker.io
+        username: ${{ secrets.DOCKER_USER }}
+        password: ${{ secrets.DOCKER_PASSWORD }}   
+    
+    - run: |
+        cd ui 
+        docker build . -t nikeshumredkar/chbms-portal-ui:master-${{ github.sha }
         docker push nikeshumredkar/chbms-portal-ui:master-${{ github.sha }}
         
     - uses: azure/webapps-deploy@v2
