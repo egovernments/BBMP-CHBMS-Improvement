@@ -25,8 +25,8 @@ jobs:
         password: ${{ secrets.DOCKERIO_PASSWORD }} 
     
     - run: |
-        docker build -f ui/Dockerfile --build-arg "WORK_DIR=ui" -t nikeshumredkar/chbms-portal-ui:master-${{ github.sha }} .
-        docker push nikeshumredkar/chbms-portal-ui:master-${{ github.sha }}
+        docker build -f ui/Dockerfile --build-arg "WORK_DIR=ui" -t index.docker.io/nikeshumredkar/chbms-portal-ui:master-${{ github.sha }} .
+        docker push index.docker.io/nikeshumredkar/chbms-portal-ui:master-${{ github.sha }}
         
     - uses: azure/webapps-deploy@v2
       with:
