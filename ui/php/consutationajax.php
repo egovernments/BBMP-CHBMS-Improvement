@@ -59,7 +59,7 @@ $rowperpage = 10;
 
 ## Fetch records
 
- $empQuery = "select  bucode, srf_number,patient_id,time_added_to_queue from patient where queue_name = ? ".$searchQuery ." order by ".$columnName." ".$columnSortOrder." limit ".$row.",".$rowperpage;
+ $empQuery = "select  bucode, srf_number,patient_id,convert_tz(time_added_to_queue , '+00:00','+05:30') as time_added_to_queue from patient where queue_name = ? ".$searchQuery ." order by ".$columnName." ".$columnSortOrder." limit ".$row.",".$rowperpage;
  	
  $stmt = $mysqli->prepare($empQuery);
   $stmt->bind_param("s", $pagetype);		
