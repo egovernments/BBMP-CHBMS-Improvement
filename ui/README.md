@@ -1,5 +1,5 @@
 ## BBMP-Dashboard
-BBMP Dashboard features
+BBMP Dashboard feature
 
 
 ## Home Screen
