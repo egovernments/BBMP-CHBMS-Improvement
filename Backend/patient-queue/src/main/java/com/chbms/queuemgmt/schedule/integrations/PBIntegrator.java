@@ -42,7 +42,7 @@ public class PBIntegrator {
             try {
                 response = client.newCall(generateBaseRequest(integrationConfig.getDashboardURL() + "/patient",
                         gson.toJson(putPatientRequest))).execute();
-                log.info("Request {}, Response of put patient {}", putPatientRequest, response.body().string());
+                log.info("Request {} sent to {}, Response of put patient {}", putPatientRequest, integrationConfig.getDashboardURL() + "/patient", response.body().string());
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
