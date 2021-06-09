@@ -4,7 +4,7 @@
 name: Azure App Service - chbms-pqs-prod(Production), Build and deploy Spring app
 
 on:
-  pull_request:
+  push:
     paths:
       - 'Backend/patient-queue/**'
     branches:
