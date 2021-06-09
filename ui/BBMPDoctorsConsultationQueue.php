@@ -1,5 +1,4 @@
 <?php
-
 include('php/queue.php'); 
 
 $pagetype = urldecode($_GET['type']);
