@@ -17,6 +17,16 @@ jobs:
     runs-on: ubuntu-latest      
     steps:
     - uses: actions/checkout@v2
+    - uses: benjlevesque/short-sha@v1.2
+      id: short-sha
+      with:
+        length: 6
+    - run: echo $SHA
+      env: 
+        SHA: ${{ steps.short-sha.outputs.sha }}
+    - run: echo $SHA
+      env: 
+        SHA: ${{ env.SHA }}
     
     - name: Login to Docker Hub
       uses: docker/login-action@v1
@@ -30,7 +40,7 @@ jobs:
           context: ./ui
           file: ./ui/Dockerfile
           push: true
-          tags: nikeshumredkar/chbms-portal-ui:master-${GITHUB_SHA::8}
+          tags: nikeshumredkar/chbms-portal-ui:master-${{env.SHA}}
      #run: |
      #    docker build -f ui/Dockerfile --build-arg "WORK_DIR=ui" -t index.docker.io/nikeshumredkar/chbms-portal-ui:master-${{ github.sha }} .
      #    docker push index.docker.io/nikeshumredkar/chbms-portal-ui:master-${{ github.sha }}
@@ -50,7 +60,7 @@ jobs:
         app-name: 'chbms-portal-prod'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_1b04ca20f0f8495eb412e7b76f9c36cc }}
-        images: 'index.docker.io/${{ secrets.DOCKERIO_USERNAME }}/chbms-portal-ui:master-${GITHUB_SHA::8}'  
+        images: 'index.docker.io/${{ secrets.DOCKERIO_USERNAME }}/chbms-portal-ui:master-${{env.SHA}}'  
       
       
     #- uses: azure/webapps-deploy@v2
