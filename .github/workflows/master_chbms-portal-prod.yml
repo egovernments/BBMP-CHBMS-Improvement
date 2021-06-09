@@ -30,7 +30,7 @@ jobs:
           context: ./ui
           file: ./ui/Dockerfile
           push: true
-          tags: nikeshumredkar/chbms-portal-ui:master-${{ github.sha }}
+          tags: nikeshumredkar/chbms-portal-ui:master-${GITHUB_SHA::8}
      #run: |
      #    docker build -f ui/Dockerfile --build-arg "WORK_DIR=ui" -t index.docker.io/nikeshumredkar/chbms-portal-ui:master-${{ github.sha }} .
      #    docker push index.docker.io/nikeshumredkar/chbms-portal-ui:master-${{ github.sha }}
@@ -50,7 +50,7 @@ jobs:
         app-name: 'chbms-portal-prod'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_1b04ca20f0f8495eb412e7b76f9c36cc }}
-        images: 'index.docker.io/${{ secrets.DOCKERIO_USERNAME }}/chbms-portal-ui:master-${{ github.sha }}'  
+        images: 'index.docker.io/${{ secrets.DOCKERIO_USERNAME }}/chbms-portal-ui:master-${GITHUB_SHA::8}'  
       
       
     #- uses: azure/webapps-deploy@v2
