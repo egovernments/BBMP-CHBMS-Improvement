@@ -1,4 +1,4 @@
-# Swagger Generated server
+## Swagger Generated server
 
 Spring Boot Server 
 
