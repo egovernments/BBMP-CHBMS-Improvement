@@ -72,4 +72,4 @@ jobs:
         app-name: 'chbms-portal-test'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_52ee6a97ba8242c3bee51aee91a6abb3 }}
-        images: 'index.docker.io/${{ secrets.DOCKERIO_USERNAME }}/nikeshumredkar/chbms-portal-ui:test-${{ github.sha }}'
+        images: 'index.docker.io/${{ secrets.DOCKERIO_USERNAME }}/nikeshumredkar/chbms-portal-ui:test-${{ env.SHA }}'
