@@ -160,7 +160,7 @@ $curDate = date('Y-m-d H:i:s');
                 <p>
                   <small>
                   <span data-zone_type="<?php echo $dataVal1['queue_name']; ?>" class="jk-font-color-grey" style="display:inline-block;">Next in Line</span><br/>
-                    <span data-zone_type="<?php echo $dataVal1['queue_name']; ?>" style="display:inline-block;"><?php echo 'BU-$dataVal1['bucode']'; ?>
+                    <span data-zone_type="<?php echo $dataVal1['queue_name']; ?>" style="display:inline-block;"><?php echo 'BU-'.$dataVal1['bucode']; ?>
                     <span data-zone_type="<?php echo $dataVal1['queue_name']; ?>" class="jk-timeperiod-element">
                     <!-- (
                       <?php                      
