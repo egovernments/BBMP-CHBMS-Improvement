@@ -22,29 +22,4 @@ if($stmt->affected_rows>0) {
  	}
 }
 $stmt->close();
-
-?>
-
-$stmt = $mysqli->prepare($pat);		
-$stmt->execute();		
-$result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);		
-if($stmt->affected_rows>0) {
-	$data = array();
- 		foreach($result as $key => $val){
-		if (!array_key_exists($val['queue_type'],$data))
-		{	
-			$data[$val['queue_type']]= array();
-		}
-		$data1 = array();
-		$data1['total'] = $val['count'];
-		$data1['queue_name'] = $val['queue_name'];
-		$data1['bucode'] = $val['bucode'];	
-		$data1['queue_type'] = $val['queue_type'];	
-		$data1['time_added_to_queue'] = $val['time_added_to_queue'];
-
-		array_push($data[$val['queue_type']],$data1);			
- 	}
-}
-$stmt->close();
-
 ?>
